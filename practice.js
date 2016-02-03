@@ -5,7 +5,10 @@
 
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
-      //Answer
+      //1. What is to the left of the dot? - implicit binding
+      //2. Use .bind() for explicit binding
+      //3. Was the new keyword used, applies to that
+      //4. If no other context, applies to the window object
 
   // 3) What is the difference between call and apply?
 
@@ -114,10 +117,9 @@ setTimeout(getMyUsername, 5000);
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
 
 
-setTimeout(getMyUsername.call(myUser), 5000);  //does not work, no delay
+//setTimeout(getMyUsername.call(myUser), 5000);  //does not work, no delay
 
-var rightContext = function(func, obj) {
-    return func.call(obj);
-};
+var correctGetUsername = getMyUsername.bind(myUser);  //correctUserName is now a new function with the right context
+//the function has to be defined on the global scope for this to work. 
 
-setTimeout(rightContext(getMyUsername, myUser), 5000);  //no delay
+setTimeout(correctGetUsername, 5000); //This works
