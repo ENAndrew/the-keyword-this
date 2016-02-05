@@ -117,7 +117,7 @@ setTimeout(getMyUsername, 5000);
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
 
 
-//setTimeout(getMyUsername.call(myUser), 5000);  //does not work, no delay
+//setTimeout(getMyUsername.call(myUser), 5000);  //does not work, no delay, because function fed to setTimeout invokes immediately
 
 var correctGetUsername = getMyUsername.bind(myUser);  //correctUserName is now a new function with the right context
 //the function has to be defined on the global scope for this to work. 
